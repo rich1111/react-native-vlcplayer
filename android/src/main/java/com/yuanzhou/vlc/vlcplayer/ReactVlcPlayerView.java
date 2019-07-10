@@ -199,13 +199,20 @@ class ReactVlcPlayerView extends SurfaceView implements
         releasePlayer();
         try {
             // Create LibVLC
-            // ArrayList<String> options = new ArrayList<String>(50);
+            ArrayList<String> options = new ArrayList<String>(50);
             // [bavv add start]
             // options.add("--rtsp-tcp");
             // options.add("-vv");
             // [bavv add end]
-            libvlc =  VLCInstance.get(getContext());
-            // libvlc = new LibVLC(getContext(), options);
+            
+            options.add("--rtsp-tcp");
+            options.add("--network-caching=0");
+            options.add("--clock-jitter=0");
+            options.add("--clock-synchro");
+            options.add("0");
+                
+            libvlc = new LibVLC(getContext(), options);
+            // libvlc =  VLCInstance.get(getContext());
 
             // Create media player
             mMediaPlayer = new MediaPlayer(libvlc);
@@ -231,8 +238,12 @@ class ReactVlcPlayerView extends SurfaceView implements
             }else{
                 m = new Media(libvlc, this.src);
             }
-            m.setHWDecoderEnabled(false, false);
+                
             m.addOption(":rtsp-tcp");
+            m.addOption(":network-caching=0");
+            m.addOption(":clock-jitter=0");
+            m.addOption(":clock-synchro=0");
+            m.setHWDecoderEnabled(true, false);
 
             mMediaPlayer.setMedia(m);
             mMediaPlayer.setScale(0);
