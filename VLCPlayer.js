@@ -84,7 +84,7 @@ export default class VLCPlayer extends Component {
   }
 
   _onStopped() {
-    this.setNativeProps({ paused: true });
+    //this.setNativeProps({ paused: true });
     if (this.props.onStopped) {
       this.props.onStopped();
     }
