@@ -81,6 +81,8 @@ class ReactVlcPlayerView extends SurfaceView implements
     private boolean playInBackground = false;
     // \ End props
 
+    private int preVolume = 200;
+
     // React
     private final ThemedReactContext themedReactContext;
     private final AudioManager audioManager;
@@ -358,7 +360,10 @@ class ReactVlcPlayerView extends SurfaceView implements
 
     };
 
-
+    /**
+     *  视频进度调整
+     * @param time
+     */
     public void seekTo(long time) {
         if(mMediaPlayer != null){
             mMediaPlayer.setTime(time);
@@ -366,12 +371,21 @@ class ReactVlcPlayerView extends SurfaceView implements
         }
     }
 
+    /**
+     * 设置资源路径
+     * @param uri
+     * @param isNetStr
+     */
     public void setSrc(String uri, boolean isNetStr) {
         this.src = uri;
         this.netStrTag = isNetStr;
         createPlayer(false);
     }
 
+    /**
+     * 改变播放速率
+     * @param rateModifier
+     */
     public void setRateModifier(float rateModifier) {
         if(mMediaPlayer != null){
             mMediaPlayer.setRate(rateModifier);
@@ -379,12 +393,35 @@ class ReactVlcPlayerView extends SurfaceView implements
     }
 
 
+    /**
+     * 改变声音大小
+     * @param volumeModifier
+     */
     public void setVolumeModifier(int volumeModifier) {
         if(mMediaPlayer != null){
             mMediaPlayer.setVolume(volumeModifier);
         }
     }
 
+    /**
+     * 改变静音状态
+     * @param muted
+     */
+    public void setMutedModifier(boolean muted) {
+        if(mMediaPlayer != null){
+            if(muted){
+                this.preVolume = mMediaPlayer.getVolume();
+                mMediaPlayer.setVolume(0);
+            }else{
+                mMediaPlayer.setVolume(this.preVolume);
+            }
+        }
+    }
+
+    /**
+     * 改变播放状态
+     * @param paused
+     */
     public void setPausedModifier(boolean paused){
         if(mMediaPlayer != null){
             if(paused){
@@ -397,6 +434,10 @@ class ReactVlcPlayerView extends SurfaceView implements
         }
     }
 
+    /**
+     * 重新加载视频
+     * @param autoplay
+     */
     public void doResume(boolean autoplay){
         createPlayer(autoplay);
     }
@@ -404,6 +445,11 @@ class ReactVlcPlayerView extends SurfaceView implements
     public void setRepeatModifier(boolean repeat){
     }
 
+
+    /**
+     * 改变宽高比
+     * @param aspectRatio
+     */
     public void setAspectRatio(String aspectRatio){
         if(mMediaPlayer != null){
             mMediaPlayer.setAspectRatio(aspectRatio);
