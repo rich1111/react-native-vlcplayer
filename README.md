@@ -5,7 +5,7 @@ project clone from `react-native-yz-vlcplayer`
 
 ### Add it to your project
 
-Run `yarn add https://github.com/Nghi-NV/react-native-vlcplayer.git`
+Run `yarn add https://github.com/rich1111/react-native-vlcplayer.git`
 
 ## android
 
