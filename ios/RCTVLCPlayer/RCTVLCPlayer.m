@@ -261,6 +261,51 @@ static NSString *const playbackRate = @"rate";
         [_player jumpForward:interval];
 }
 
+/**
+ * audio  -----> start
+ */
+- (void)setMuted:(BOOL)muted
+{
+    if(_player){
+        VLCAudio *audio = _player.audio;
+        [audio setMuted: muted];
+        NSLog(@"Muted %d", muted);
+    }
+}
+
+-(void)setVolume:(int)interval
+{
+    if(_player){
+        VLCAudio *audio = _player.audio;
+        if(interval >= 0){
+            audio.volume = interval;
+        }
+        NSLog(@"Volume %d", interval);
+    }
+}
+
+-(void)setVolumeDown:(int)volume
+{
+    if(_player){
+
+        VLCAudio *audio = _player.audio;
+        [audio volumeDown];
+    }
+}
+
+
+
+-(void)setVolumeUp:(int)volume
+{
+    if(_player){
+        VLCAudio *audio = _player.audio;
+        [audio volumeUp];
+    }
+}
+
+//audio  -----> end
+
+
 -(void)setSeek:(float)pos
 {
     if([_player isSeekable]){
