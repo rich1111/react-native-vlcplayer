@@ -21,7 +21,8 @@ static NSString *const playbackRate = @"rate";
     NSDictionary * _source;
     BOOL _paused;
     BOOL _started;
-    
+    BOOL _muted;
+    int _volume;
 }
 
 - (instancetype)initWithEventDispatcher:(RCTEventDispatcher *)eventDispatcher
@@ -79,6 +80,7 @@ static NSString *const playbackRate = @"rate";
 {
     if(_player){
         [_player play];
+        [self setMuted:_muted];
         _paused = NO;
         _started = YES;
     }
@@ -266,15 +268,21 @@ static NSString *const playbackRate = @"rate";
  */
 - (void)setMuted:(BOOL)muted
 {
+    _muted = muted;
     if(_player){
         VLCAudio *audio = _player.audio;
         [audio setMuted: muted];
+        if(_volume >= 0){
+            audio.volume = _volume;
+        }
         NSLog(@"Muted %d", muted);
+        NSLog(@"Volume %d", _volume);
     }
 }
 
 -(void)setVolume:(int)interval
 {
+    _volume = interval;
     if(_player){
         VLCAudio *audio = _player.audio;
         if(interval >= 0){
