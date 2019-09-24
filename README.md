@@ -1,26 +1,39 @@
 # react-native-vlcplayer
 A `<VLCPlayer>` component for react-native
-project clone from `react-native-yz-vlcplayer`
+project clone from `https://github.com/Nghi-NV/react-native-vlcplayer.git`
 
 
 ### Add it to your project
 
+Run `npm install --save react-native-vlcplayer2`
+
+or
+
+Run `yarn add react-native-vlcplayer2`
+
+or 
+
 Run `yarn add https://github.com/rich1111/react-native-vlcplayer.git`
 
-## android
+
+## android/ios link
+
+Run `react-native link react-native-vlcplayer2`
+
+or 
 
 Run `react-native link react-native-vlcplayer`
+
 
 ## ios
 
 Use framework
 1. cd to ios
-2. run `pod init`
-3. add `pod 'MobileVLCKit-unstable', '3.0.0a44'` to pod file
-3. run `pod install`
+2. run `pod install`
 
 Enable Bitcode
-in root project select Build Settings ---> find Bitcode and select Enable Bitcode
+in root project select Build Settings ---> find Bitcode and select Disable Bitcode
+
 
 ## Use
 ````
