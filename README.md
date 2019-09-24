@@ -20,10 +20,6 @@ Run `yarn add https://github.com/rich1111/react-native-vlcplayer.git`
 
 Run `react-native link react-native-vlcplayer2`
 
-or 
-
-Run `react-native link react-native-vlcplayer`
-
 
 ## ios
 
