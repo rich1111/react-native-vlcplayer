@@ -20,9 +20,9 @@ import org.videolan.libvlc.IVLCVout;
 import org.videolan.libvlc.LibVLC;
 import org.videolan.libvlc.Media;
 import org.videolan.libvlc.MediaPlayer;
-import org.videolan.libvlc.util.VLCUtil;
-import org.videolan.vlc.util.VLCInstance;
-import org.videolan.vlc.VlcVideoView;
+//import org.videolan.libvlc.util.VLCUtil;
+//import org.videolan.vlc.util.VLCInstance;
+//import org.videolan.vlc.VlcVideoView;
 import java.util.ArrayList;
 
 @SuppressLint("ViewConstructor")
@@ -208,9 +208,10 @@ class ReactVlcPlayerView extends SurfaceView implements
             // [bavv add end]
             
             options.add("--rtsp-tcp");
-            options.add("--network-caching=0");
-            options.add("--clock-jitter=0");
-            options.add("--clock-synchro");
+            options.add("--no-stats");
+            options.add("--network-caching=300");
+            options.add("--clock-jitter=110");
+            options.add("--clock-synchro=1");
             options.add("0");
                 
             libvlc = new LibVLC(getContext(), options);
@@ -242,9 +243,10 @@ class ReactVlcPlayerView extends SurfaceView implements
             }
                 
             m.addOption(":rtsp-tcp");
-            m.addOption(":network-caching=0");
-            m.addOption(":clock-jitter=0");
-            m.addOption(":clock-synchro=0");
+            m.addOption(":no-stats");
+            m.addOption(":network-caching=300");
+            m.addOption(":clock-jitter=110");
+            m.addOption(":clock-synchro=1");
             m.setHWDecoderEnabled(true, false);
 
             mMediaPlayer.setMedia(m);
