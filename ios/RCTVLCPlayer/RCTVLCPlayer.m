@@ -271,10 +271,14 @@ static NSString *const playbackRate = @"rate";
     _muted = muted;
     if(_player){
         VLCAudio *audio = _player.audio;
-        [audio setMuted: muted];
-        if(_volume >= 0){
-            audio.volume = _volume;
+        if(muted){
+            audio.volume = 0;
+        } else{
+            if(_volume >= 0){
+                audio.volume = _volume;
+            }
         }
+        [audio setMuted: false];
         NSLog(@"Muted %d", muted);
         NSLog(@"Volume %d", _volume);
     }
