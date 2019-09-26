@@ -21,7 +21,7 @@ import org.videolan.libvlc.LibVLC;
 import org.videolan.libvlc.Media;
 import org.videolan.libvlc.MediaPlayer;
 //import org.videolan.libvlc.util.VLCUtil;
-//import org.videolan.vlc.util.VLCInstance;
+import org.videolan.vlc.util.VLCInstance;
 //import org.videolan.vlc.VlcVideoView;
 import java.util.ArrayList;
 
@@ -201,21 +201,22 @@ class ReactVlcPlayerView extends SurfaceView implements
         releasePlayer();
         try {
             // Create LibVLC
-            ArrayList<String> options = new ArrayList<String>(50);
+            //ArrayList<String> options = new ArrayList<String>(50);
             // [bavv add start]
             // options.add("--rtsp-tcp");
             // options.add("-vv");
             // [bavv add end]
-            
+
+            /*
             options.add("--rtsp-tcp");
             options.add("--no-stats");
             options.add("--network-caching=300");
             options.add("--clock-jitter=110");
             options.add("--clock-synchro=1");
             options.add("0");
-                
-            libvlc = new LibVLC(getContext(), options);
-            // libvlc =  VLCInstance.get(getContext());
+              */
+            //libvlc = new LibVLC(getContext(), options);
+            libvlc =  VLCInstance.get(getContext());
 
             // Create media player
             mMediaPlayer = new MediaPlayer(libvlc);
@@ -241,13 +242,14 @@ class ReactVlcPlayerView extends SurfaceView implements
             }else{
                 m = new Media(libvlc, this.src);
             }
-                
+
             m.addOption(":rtsp-tcp");
             m.addOption(":no-stats");
-            m.addOption(":network-caching=300");
-            m.addOption(":clock-jitter=110");
-            m.addOption(":clock-synchro=1");
-            m.setHWDecoderEnabled(true, false);
+            m.addOption(":quiet-synchro");
+            //m.addOption(":network-caching=300");
+            //m.addOption(":clock-jitter=110");
+            //m.addOption(":clock-synchro=0");
+            m.setHWDecoderEnabled(true, true);
 
             mMediaPlayer.setMedia(m);
             mMediaPlayer.setScale(0);
