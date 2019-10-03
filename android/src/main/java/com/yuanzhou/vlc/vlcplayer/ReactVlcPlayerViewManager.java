@@ -110,7 +110,7 @@ public class ReactVlcPlayerViewManager extends SimpleViewManager<ReactVlcPlayerV
         //videoView.seekTo(seek);
     }
 
-    @ReactProp(name = PROP_RESUME, defaultBoolean = false)
+    @ReactProp(name = PROP_RESUME, defaultBoolean = true)
     public void setResume(final ReactVlcPlayerView videoView, final boolean autoPlay) {
         videoView.doResume(autoPlay);
     }
