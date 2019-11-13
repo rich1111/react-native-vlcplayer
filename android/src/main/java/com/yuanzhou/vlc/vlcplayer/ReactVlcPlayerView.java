@@ -18,7 +18,9 @@ import org.videolan.libvlc.IVLCVout;
 import org.videolan.libvlc.LibVLC;
 import org.videolan.libvlc.Media;
 import org.videolan.libvlc.MediaPlayer;
-import org.videolan.vlc.util.VLCInstance;
+
+import java.util.ArrayList;
+//import org.videolan.vlc.util.VLCInstance;
 
 //import org.videolan.libvlc.util.VLCUtil;
 //import org.videolan.vlc.VlcVideoView;
@@ -214,10 +216,10 @@ class ReactVlcPlayerView extends TextureView implements
         }
         try {
             // Create LibVLC
-            //ArrayList<String> options = new ArrayList<String>(50);
+            ArrayList<String> options = new ArrayList<String>(50);
             // [bavv add start]
-            // options.add("--rtsp-tcp");
-            // options.add("-vv");
+            options.add("--rtsp-tcp");
+            options.add("-vv");
             // [bavv add end]
 
             /*
@@ -227,9 +229,9 @@ class ReactVlcPlayerView extends TextureView implements
             options.add("--clock-jitter=110");
             options.add("--clock-synchro=1");
             options.add("0");
-              */
-            //libvlc = new LibVLC(getContext(), options);
-            libvlc =  VLCInstance.get(getContext());
+             */
+            libvlc = new LibVLC(getContext(), options);
+            //libvlc =  VLCInstance.get(getContext());
 
             // Create media player
             mMediaPlayer = new MediaPlayer(libvlc);
