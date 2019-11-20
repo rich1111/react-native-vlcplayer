@@ -11,7 +11,7 @@ or
 
 Run `yarn add react-native-vlcplayer2`
 
-or 
+or
 
 Run `yarn add https://github.com/rich1111/react-native-vlcplayer.git`
 
@@ -35,7 +35,7 @@ in root project select Build Settings ---> find Bitcode and select Disable Bitco
 ````
   (1) import { VLCPlayer, VlCPlayerView } from 'react-native-vlcplayer';
 
-  (2) 
+  (2)
     <VLCPlayer
            ref={ref => (this.vlcPlayer = ref)}
            style={[styles.video]}
@@ -74,3 +74,6 @@ in root project select Build Settings ---> find Bitcode and select Disable Bitco
            }}
        />
 ````
+![1574120354357.jpg](./images/1574120354357.jpg)
+
+![1574120350599.jpg](./images/1574120350599.jpg)
