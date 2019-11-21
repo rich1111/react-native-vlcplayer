@@ -74,4 +74,4 @@ in root project select Build Settings ---> find Bitcode and select Disable Bitco
            }}
        />
 ````
-<img src="./images/1574120354357.jpg" alt="1574120354357.jpg" style="zoom: 25%;" /> <img src="./images/1574120350599.jpg" alt="1574120350599.jpg" style="zoom:25%;" />
+<img src="./images/1574120354357.jpg" alt="1574120354357.jpg"  /> <img src="./images/1574120350599.jpg" alt="1574120350599.jpg"  />
